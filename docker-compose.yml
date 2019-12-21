@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        UID: 1001
+        GID: 1001
+    image: relay42:latest
+    tty: true
+    stdin_open: true
+    volumes:
+      # - ./application.yml:/home/relay42/app/.config/application.yml:ro
+      - data:/files
+    ports:
+      - "8080:8080"
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+      - NET_ADMIN
+      - SYS_TIME
+
+volumes:
+  data:
