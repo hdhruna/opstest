@@ -6,6 +6,7 @@ export AWS_AZ=$(curl -s -q http://169.254.169.254/latest/meta-data/placement/ava
 export AWS_AZ="${AWS_AZ}"
 export date_api_host="${date_api_host}"
 export date_api_port="${date_api_port}"
+curl http://169.254.169.254/latest/meta-data/placement/availability-zone
 env
 /home/relay42/app/mvnw spring-boot:run
 
