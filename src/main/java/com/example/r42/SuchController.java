@@ -19,6 +19,8 @@ public class SuchController {
     // }
 
     RestTemplate restTemplate = new RestTemplate();
+    String azUrl = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
+    String azName = restTemplate.getForObject(azUrl, String.class);
     String dateUrl = "http://" + System.getenv("date_api_host") + ":" + System.getenv("date_api_port") + "/date";
     // ResponseEntity < String > response = restTemplate.getForEntity("http://" + date_api_host + ":" + date_api_port + "/date", String.class);
     ResponseEntity < String > response = restTemplate.getForEntity(dateUrl, String.class);
@@ -26,7 +28,7 @@ public class SuchController {
 
     @RequestMapping("/hello")
     public String suchHello() {
-        return "hello from " + suchName + " az, the server local time is " + date;
+        return "hello from " + azName + " az, the server local time is " + date;
     }
 }
 
