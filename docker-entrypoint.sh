@@ -1,16 +1,17 @@
 #!/bin/ash
 #shellcheck shell=dash
 
-export AWS_AZ=$(curl -s -q http://169.254.169.254/latest/meta-data/placement/availability-zone)
+curl -s "${ECS_CONTAINER_METADATA_URI}"/task >es_task.json
+cat es_task.json
 
-export AWS_AZ="${AWS_AZ}"
+export AWS_AZ=$(curl -s "${ECS_CONTAINER_METADATA_URI}"/task | jq -r '.AvailabilityZone')
+
+# export AWS_AZ="${AWS_AZ}"
 export date_api_host="${date_api_host}"
 export date_api_port="${date_api_port}"
-curl http://169.254.169.254/latest/meta-data/placement/availability-zone
-env
+
 /home/relay42/app/mvnw spring-boot:run
 
 #java -Djava.security.egd=file:/dev/./urandom -Dspring.config.location=/home/celonis/app/.config/application.yml -jar /home/celonis/app/celonis.jar
-
 
 # sleep 3600
