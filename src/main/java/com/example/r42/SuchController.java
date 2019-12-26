@@ -43,7 +43,7 @@ public class SuchController {
     public String suchHello(){
 
         String azUrl = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
-        String timeUrl = System.getenv("date_api_host") + ":" + System.getenv("date_api_port");
+        String timeUrl = "http://" + System.getenv("date_api_host") + ":" + System.getenv("date_api_port") + "/date";
         RestTemplate restTemplate = new RestTemplate();
 
         String result = restTemplate.getForObject(timeUrl, String.class);
