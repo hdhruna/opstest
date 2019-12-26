@@ -43,12 +43,13 @@ public class SuchController {
     public String suchHello(){
 
         // String azUrl = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
-        String azUrl = System.getenv("AWS_AZ");
+        // String azUrl = System.getenv("AWS_AZ");
         String timeUrl = "http://" + System.getenv("date_api_host") + ":" + System.getenv("date_api_port") + "/date";
         RestTemplate restTemplate = new RestTemplate();
 
         String result = restTemplate.getForObject(timeUrl, String.class);
-        String azName = restTemplate.getForObject(azUrl, String.class);
+        // String azName = restTemplate.getForObject(azUrl, String.class);
+        String azName = System.getenv("AWS_AZ");
 
         return "Hello from " + azName + " az, the server local time is " + result;
     }
