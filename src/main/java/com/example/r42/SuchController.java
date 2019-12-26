@@ -42,7 +42,8 @@ public class SuchController {
     @RequestMapping("/hello")
     public String suchHello(){
 
-        String azUrl = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
+        // String azUrl = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
+        String azUrl = System.getenv("AWS_AZ");
         String timeUrl = "http://" + System.getenv("date_api_host") + ":" + System.getenv("date_api_port") + "/date";
         RestTemplate restTemplate = new RestTemplate();
 
