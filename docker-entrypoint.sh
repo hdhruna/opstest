@@ -1,11 +1,11 @@
 #!/bin/ash
 #shellcheck shell=dash
 
-curl -s "${ECS_CONTAINER_METADATA_URI}"/task >es_task.json
-cat es_task.json
+#curl -s "${ECS_CONTAINER_METADATA_URI}"/task >es_task.json
+#cat es_task.json
 
-export AWS_AZ=$(curl -s "${ECS_CONTAINER_METADATA_URI}"/task | jq -r '.AvailabilityZone')
-
+#export AWS_AZ=$(curl -s "${ECS_CONTAINER_METADATA_URI}"/task | jq -r '.AvailabilityZone')
+export AWS_AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
 # export AWS_AZ="${AWS_AZ}"
 export date_api_host="${date_api_host}"
 export date_api_port="${date_api_port}"
