@@ -10,8 +10,12 @@ export AWS_AZ="${AWS_AZ:=FARGATE}"
 # export AWS_AZ="${AWS_AZ}"
 export date_api_host="${date_api_host:=time}"
 export date_api_port="${date_api_port:=8081}"
-timeUrl="${date_api_host}:${date_api_port}"
-export timeUrl=${timeUrl:=EC2_TIME_ALB}
+
+if [ $AWS_AZ == "FARGATE" ]; then
+    export timeUrl="${date_api_host}:${date_api_port}"
+else
+    export timeUrl="${EC2_TIME_ALB}"
+fi
 
 /home/relay42/app/mvnw spring-boot:run
 
