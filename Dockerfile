@@ -15,7 +15,7 @@ ARG UID=1001
 ARG GID=1001
 
 USER root
-RUN apk add --no-cache shadow sudo curl && \    
+RUN apk -U upgrade --no-cache --no-progress --purge && apk add --no-progress --purge --no-cache shadow sudo curl && \    
     if [ -z "$(getent group "$GID")" ]; then \
     addgroup -S -g "$GID" relay42; \
     else \
