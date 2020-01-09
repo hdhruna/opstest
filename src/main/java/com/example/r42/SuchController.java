@@ -19,7 +19,8 @@ public class SuchController {
 
         String result = restTemplate.getForObject(timeUrl, String.class);
         String azName = System.getenv("AWS_AZ");
+        String envName = System.getenv("getENV");
 
-        return "Hello from " + azName + " az, the containers local time is " + result;
+        return "Hello from " + azName + " az, the containers local time is " + result + " in " + envName + " environment";
     }
 }
