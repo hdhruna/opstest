@@ -20,6 +20,4 @@ jobs:
         DOCKER_BUILDKIT: 1
       run: |
         # Build a docker container
-        export UID=${UID}
-        export GID=${GID}
         docker build -t opstest:$IMAGE_TAG 
