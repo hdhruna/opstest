@@ -20,4 +20,8 @@ jobs:
         DOCKER_BUILDKIT: 1
       run: |
         # Build a docker container
-        UID=1001 GID=1001 docker build -t opstest:$IMAGE_TAG 
+        USER_ID=1001
+        GROUP_ID=1001
+        export UID=${USER_ID}
+        export GID=${GROUP_ID}
+        docker build -t opstest:$IMAGE_TAG 
