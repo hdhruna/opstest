@@ -20,4 +20,4 @@ jobs:
         DOCKER_BUILDKIT: 1
       run: |
         # Build a docker container
-        docker build -t opstest:$IMAGE_TAG 
+        docker build -t opstest:$IMAGE_TAG .
