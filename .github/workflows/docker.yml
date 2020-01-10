@@ -20,4 +20,4 @@ jobs:
         DOCKER_BUILDKIT: 1
       run: |
         # Build a docker container
-        UID=1001 GID=1001 docker build -t opstest:$IMAGE_TAG 
+        docker build -t opstest:$IMAGE_TAG .
